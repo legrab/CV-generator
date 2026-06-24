@@ -1,0 +1,183 @@
+profile:
+  name: Alex Example
+  headline: Software Engineer | Product Software | .NET & TypeScript
+  location: Vienna, Austria
+  contact:
+    email: alex@example.com
+    linkedin: www.linkedin.com/in/alex-example
+    github: github.com/alex-example
+
+settings:
+  defaultLanguage: en
+  languages:
+    - en
+    - de
+
+content:
+  en:
+    summary:
+      - Software engineer focused on maintainable systems, reliable integrations, and software that teams can estimate, deliver, and support with confidence.
+      - Main technical base in .NET, C#, and TypeScript, with practical work across APIs, databases, CI/CD, and production support.
+
+    sidebar:
+      sections:
+        - title: Skills
+          items:
+            - .NET
+            - C#
+            - TypeScript
+            - React
+            - REST APIs
+            - PostgreSQL
+            - Docker
+            - CI/CD
+
+        - title: Languages
+          items:
+            - "English: Full professional"
+            - "German: Limited working"
+
+        - title: Certifications
+          items:
+            - "Microsoft Certified: Azure Fundamentals"
+
+    experience:
+      - company: Example Systems GmbH
+        title: Software Engineer
+        location: Vienna, Austria
+        period: Jan 2022 - Present
+        intro: Product software role focused on backend services, frontend modernization, integrations, and delivery workflows.
+        bullets:
+          - Designed and maintained API-based backend services for customer-facing business workflows.
+          - Built frontend features with TypeScript and React while keeping existing workflows stable.
+          - Improved build and deployment pipelines to make delivery more predictable.
+        technologies:
+          - .NET
+          - C#
+          - TypeScript
+          - React
+          - REST APIs
+          - PostgreSQL
+          - Docker
+          - CI/CD
+
+      - company: Example Education Center
+        title: Computer Science Teacher
+        location: Budapest, Hungary
+        period: Sep 2018 - Jun 2021
+        intro: Teaching role focused on computer science fundamentals, exam preparation, and structured problem solving.
+        bullets:
+          - Prepared students for computer science exams and practical programming tasks.
+          - Developed learning materials for beginner-friendly software and web topics.
+        technologies:
+          - Computer Science Education
+          - Teaching
+          - Programming Basics
+
+    projects:
+      - name: Home Inventory App
+        period: 2024 - Present
+        intro: Personal project for household stock tracking, expiry awareness, and automatic shopping-list generation.
+        bullets:
+          - Designed the app around products, quantities, expiry dates, and preferred stock levels.
+          - Used the project to experiment with AI-assisted implementation and repository-driven documentation.
+        technologies:
+          - Angular
+          - TypeScript
+          - Node.js
+          - GitHub Actions
+
+    education:
+      - institution: Example University
+        degree: MSc, Computer Science Education
+        period: "2016 - 2018"
+        location: Budapest, Hungary
+        description: Focused on computer science education, digital learning, and curriculum design.
+        areas:
+          - Computer Science Education
+          - E-Learning
+          - Curriculum Design
+
+      - institution: Example University
+        degree: BSc, Mathematics
+        period: "2012 - 2016"
+        location: Budapest, Hungary
+        description: Focused on mathematics, with supplementary studies in informatics.
+        areas:
+          - Mathematics
+          - Informatics
+          - Analytical Problem Solving
+
+    certifications:
+      - "Microsoft Certified: Azure Fundamentals"
+
+    languages:
+      - "Hungarian: Native"
+      - "English: Full professional"
+      - "German: Limited working"
+
+  de:
+    summary:
+      - Software Engineer mit Fokus auf wartbare Systeme, zuverlässige Integrationen und Software, die Teams realistisch einschätzen, liefern und langfristig betreuen können.
+      - Technische Basis in .NET, C# und TypeScript, mit praktischer Erfahrung in APIs, Datenbanken, CI/CD und Production Support.
+
+    sidebar:
+      sections:
+        - title: Fähigkeiten
+          items:
+            - .NET
+            - C#
+            - TypeScript
+            - React
+            - REST APIs
+            - PostgreSQL
+            - Docker
+            - CI/CD
+
+        - title: Sprachen
+          items:
+            - "Englisch: Verhandlungssicher"
+            - "Deutsch: Grundlegende Berufspraxis"
+
+        - title: Zertifikate
+          items:
+            - "Microsoft Certified: Azure Fundamentals"
+
+    experience:
+      - company: Example Systems GmbH
+        title: Software Engineer
+        location: Wien, Österreich
+        period: Jan 2022 - Heute
+        intro: Produktsoftware-Rolle mit Fokus auf Backend Services, Frontend-Modernisierung, Integrationen und Delivery Workflows.
+        bullets:
+          - Design und Wartung API-basierter Backend Services für kundenseitige Business Workflows.
+          - Entwicklung von Frontend Features mit TypeScript und React bei stabiler Weiterführung bestehender Workflows.
+          - Verbesserung von Build- und Deployment-Pipelines für besser planbare Lieferung.
+        technologies:
+          - .NET
+          - C#
+          - TypeScript
+          - React
+          - REST APIs
+          - PostgreSQL
+          - Docker
+          - CI/CD
+
+    education:
+      - institution: Example University
+        degree: MSc, Informatikunterricht
+        period: "2016 - 2018"
+        location: Budapest, Ungarn
+        description: Fokus auf Informatikunterricht, digitales Lernen und Curriculum Design.
+        areas:
+          - Informatikunterricht
+          - E-Learning
+          - Curriculum Design
+
+    certifications:
+      - "Microsoft Certified: Azure Fundamentals"
+
+    languages:
+      - "Ungarisch: Muttersprache"
+      - "Englisch: Verhandlungssicher"
+      - "Deutsch: Grundlegende Berufspraxis"

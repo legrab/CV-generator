@@ -1,0 +1,42 @@
+{
+  "name": "cv-builder",
+  "version": "0.1.0",
+  "description": "A small multilingual CV generator that turns structured YAML data into HTML, Markdown, and PDF outputs.",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "bin": {
+    "cv-builder": "./src/cli/index.js"
+  },
+  "scripts": {
+    "generate": "node ./src/cli/index.js generate",
+    "validate": "node ./src/cli/index.js validate",
+    "example:html": "node ./src/cli/index.js generate --data ./data/example.cv.yml --lang en --format html --out ./output",
+    "example:markdown": "node ./src/cli/index.js generate --data ./data/example.cv.yml --lang en --format markdown --out ./output",
+    "example:pdf": "node ./src/cli/index.js generate --data ./data/example.cv.yml --lang en --format pdf --out ./output",
+    "example:all": "node ./src/cli/index.js generate --data ./data/example.cv.yml --lang all --format all --out ./output"
+  },
+  "keywords": [
+    "cv",
+    "resume",
+    "generator",
+    "yaml",
+    "html",
+    "pdf",
+    "markdown",
+    "multilingual"
+  ],
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "commander": "^12.1.0",
+    "markdown-it": "^14.1.0",
+    "nunjucks": "^3.2.4",
+    "@sparticuz/chromium": "^131.0.0",
+    "playwright": "^1.49.1",
+    "playwright-core": "^1.49.1",
+    "yaml": "^2.6.1"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}

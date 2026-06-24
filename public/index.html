@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CV Builder</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="eyebrow">CV Builder</div>
+        <h1>Upload a CV source, choose an output, and download the generated file.</h1>
+        <p class="lede">
+          This deployment uses the same generator as the CLI. Keep your CV source in YAML,
+          validate it against the schema, and export HTML or Markdown from the browser.
+          Use your browser's print dialog on the generated HTML if you want a PDF.
+        </p>
+      </header>
+
+      <main class="layout">
+        <section class="panel">
+          <h2>Generate</h2>
+          <form id="cv-form">
+            <label>
+              CV data file
+              <input id="cv-file" type="file" accept=".yml,.yaml,.json,text/yaml,text/plain" />
+            </label>
+
+            <label>
+              CV source
+              <textarea id="cv-data" rows="18" spellcheck="false" placeholder="Paste your YAML here, or choose a file above."></textarea>
+            </label>
+
+            <div class="controls">
+              <label>
+                Language
+                <select id="cv-lang" disabled>
+                  <option value="">Upload a CV first</option>
+                </select>
+              </label>
+
+              <label>
+                Output
+                <select id="cv-format">
+                  <option value="html">HTML</option>
+                  <option value="markdown">Markdown</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="actions">
+              <button id="generate-btn" type="submit">Generate file</button>
+              <a id="download-link" class="download-link" hidden>Download generated file</a>
+            </div>
+
+            <p id="status" class="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="panel secondary">
+          <section>
+            <h2>Downloads</h2>
+            <div class="download-grid">
+              <a href="/api/example" download>Download example CV</a>
+              <a href="/api/schema" download>Download schema</a>
+            </div>
+          </section>
+
+          <section>
+            <h2>Schema expectation</h2>
+            <ul class="list">
+              <li><code>profile.name</code>, <code>profile.headline</code>, and <code>profile.contact.email</code> are required.</li>
+              <li><code>content</code> needs at least one language key such as <code>en</code> or <code>de</code>.</li>
+              <li>Each language can include summary, sidebar, experience, projects, education, certifications, languages, and publications.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Suggested AI prompt</h2>
+            <p class="small-copy">
+              Use this when asking an AI to convert an existing CV into the required format:
+            </p>
+            <pre class="prompt">Rewrite the attached CV into valid YAML for the attached schema. Keep only factual content from the source CV, preserve dates and employers, keep the result concise, and return YAML only.</pre>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

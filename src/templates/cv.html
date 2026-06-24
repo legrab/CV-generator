@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="{{ cv.lang }}">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ cv.profile.name }} - CV</title>
+  {% if inlineStyles %}
+  <style>
+    {{ inlineStyles | safe }}
+  </style>
+  {% else %}
+  <link rel="stylesheet" href="{{ stylesheetHref }}" />
+  {% endif %}
+</head>
+
+<body>
+  <main class="page">
+    <aside class="sidebar">
+      <section class="profile-block">
+        <h1>{{ cv.profile.name }}</h1>
+        <p class="headline">{{ cv.profile.headline }}</p>
+      </section>
+
+      <section class="contact-block">
+        {% if cv.profile.location %}
+        <p>{{ cv.profile.location }}</p>
+        {% endif %}
+
+        {% if cv.profile.contact.email %}
+        <p>{{ cv.profile.contact.email }}</p>
+        {% endif %}
+
+        {% if cv.profile.contact.phone %}
+        <p>{{ cv.profile.contact.phone }}</p>
+        {% endif %}
+
+        {% if cv.profile.contact.linkedin %}
+        <p>{{ cv.profile.contact.linkedin }}</p>
+        {% endif %}
+
+        {% if cv.profile.contact.github %}
+        <p>{{ cv.profile.contact.github }}</p>
+        {% endif %}
+
+        {% if cv.profile.contact.website %}
+        <p>{{ cv.profile.contact.website }}</p>
+        {% endif %}
+      </section>
+
+      {% for section in cv.sidebar.sections %}
+      <section class="sidebar-section">
+        <h2>{{ section.title }}</h2>
+        {% set sectionTitle = section.title | lower %}
+        {% if "skill" in sectionTitle or "kompetenz" in sectionTitle or "készség" in sectionTitle %}
+        <p class="word-cloud">
+          {% for item in section.items %}
+          <span>{{ item }}</span>{% if not loop.last %}<span class="word-cloud-separator">|</span>{%
+          endif %}
+          {% endfor %}
+        </p>
+        {% else %}
+        <ul>
+          {% for item in section.items %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </section>
+      {% endfor %}
+    </aside>
+
+    <section class="content">
+      {% if cv.summary.length %}
+      <section class="section summary">
+        <h2>Summary</h2>
+        {% for paragraph in cv.summary %}
+        <p class="justified-text">{{ paragraph }}</p>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if cv.experience.length %}
+      <section class="section">
+        <h2>Experience</h2>
+
+        {% for item in cv.experience %}
+        <article class="entry {{ item | layoutClass }}">
+          <header class="entry-header">
+            <div>
+              <h3>{{ item.company }}</h3>
+              <p class="role">{{ item.title }}</p>
+            </div>
+
+            <div class="meta">
+              <p>{{ item.period }}</p>
+              {% if item.location %}
+              <p>{{ item.location }}</p>
+              {% endif %}
+            </div>
+          </header>
+
+          {% if item.intro %}
+          <p class="intro justified-text">{{ item.intro }}</p>
+          {% endif %}
+
+          {% if item.bullets.length %}
+          <ul>
+            {% for bullet in item.bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if item.technologies.length %}
+          <p class="tech-stack justified-text">
+            <strong>Core technologies:</strong>
+            {{ item.technologies | joinTech }}
+          </p>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if cv.projects.length %}
+      <section class="section">
+        <h2>Projects</h2>
+
+        {% for item in cv.projects %}
+        <article class="entry {{ item | layoutClass }}">
+          <header class="entry-header">
+            <div>
+              <h3>{{ item.name }}</h3>
+              {% if item.associatedWith %}
+              <p class="role">Associated with {{ item.associatedWith }}</p>
+              {% endif %}
+            </div>
+
+            {% if item.period %}
+            <div class="meta">
+              <p>{{ item.period }}</p>
+            </div>
+            {% endif %}
+          </header>
+
+          {% if item.intro %}
+          <p class="intro">{{ item.intro }}</p>
+          {% endif %}
+
+          {% if item.bullets.length %}
+          <ul>
+            {% for bullet in item.bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          {% if item.technologies.length %}
+          <p class="tech-stack justified-text">
+            <strong>Core technologies:</strong>
+            {{ item.technologies | joinTech }}
+          </p>
+          {% endif %}
+
+          {% if item.links.length %}
+          <ul class="links">
+            {% for link in item.links %}
+            <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if cv.education.length %}
+      <section class="section">
+        <h2>Education</h2>
+
+        {% for item in cv.education %}
+        <article class="entry {{ item | layoutClass }}">
+          <header class="entry-header">
+            <div>
+              <h3>{{ item.institution }}</h3>
+              <p class="role">{{ item.degree }}</p>
+            </div>
+
+            <div class="meta">
+              <p>{{ item.period }}</p>
+              {% if item.location %}
+              <p>{{ item.location }}</p>
+              {% endif %}
+            </div>
+          </header>
+
+          {% if item.description %}
+          <p class="intro">{{ item.description }}</p>
+          {% endif %}
+
+          {% if item.areas.length %}
+          <p class="tech-stack justified-text">
+            <strong>Core areas:</strong>
+            {{ item.areas | joinTech }}
+          </p>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if cv.certifications.length %}
+      <section class="section simple-list">
+        <h2>Certifications</h2>
+        <ul>
+          {% for item in cv.certifications %}
+          <li>
+            {% if item.name %}
+            {{ item.name }}
+            {% else %}
+            {{ item }}
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      {% if cv.languages.length %}
+      <section class="section simple-list">
+        <h2>Languages</h2>
+        <ul>
+          {% for item in cv.languages %}
+          <li>
+            {% if item.name %}
+            {{ item.name }}
+            {% else %}
+            {{ item }}
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      {% if cv.publications.length %}
+      <section class="section simple-list">
+        <h2>Publications</h2>
+        <ul>
+          {% for item in cv.publications %}
+          <li>
+            {% if item.name %}
+            {{ item.name }}
+            {% else %}
+            {{ item }}
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+    </section>
+  </main>
+</body>
+
+</html>
