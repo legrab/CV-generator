@@ -1,0 +1,48 @@
+name: Generate CV
+description: "Generate CV output from structured YAML data using CV-generator."
+
+inputs:
+  input:
+    description: "Path to the CV YAML file in the calling repository."
+    required: true
+  out:
+    description: "Output directory in the calling repository."
+    required: false
+    default: "public"
+  lang:
+    description: "Language to generate, or all."
+    required: false
+    default: "en"
+  format:
+    description: "Output format: html, markdown, pdf, or all."
+    required: false
+    default: "html"
+  node-version:
+    description: "Node.js version."
+    required: false
+    default: "24"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: npm
+        cache-dependency-path: cv-generator/package-lock.json
+
+    - name: Install generator dependencies
+      shell: bash
+      working-directory: cv-generator
+      run: npm ci
+
+    - name: Generate CV
+      shell: bash
+      working-directory: cv-generator
+      run: |
+        node ./src/cli/index.js generate \
+          --data="${GITHUB_WORKSPACE}/${{ inputs.input }}" \
+          --lang="${{ inputs.lang }}" \
+          --format="${{ inputs.format }}" \
+          --out="${GITHUB_WORKSPACE}/${{ inputs.out }}"

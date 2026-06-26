@@ -11,6 +11,7 @@
   "scripts": {
     "generate": "node ./src/cli/index.js generate",
     "validate": "node ./src/cli/index.js validate",
+	"generate:file": "node scripts/generate-cv-file.js",
     "example:html": "node ./src/cli/index.js generate --data ./data/example.cv.yml --lang en --format html --out ./output",
     "example:markdown": "node ./src/cli/index.js generate --data ./data/example.cv.yml --lang en --format markdown --out ./output",
     "example:pdf": "node ./src/cli/index.js generate --data ./data/example.cv.yml --lang en --format pdf --out ./output",
