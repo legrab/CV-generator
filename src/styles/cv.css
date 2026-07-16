@@ -83,6 +83,11 @@ body {
   line-height: 1.28;
 }
 
+.headline-block {
+  display: inline-block;
+  max-width: 100%;
+}
+
 .contact-block {
   margin-top: 7mm;
   font-size: var(--font-size-small);

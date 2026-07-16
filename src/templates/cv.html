@@ -19,7 +19,7 @@
     <aside class="sidebar">
       <section class="profile-block">
         <h1>{{ cv.profile.name }}</h1>
-        <p class="headline">{{ cv.profile.headline }}</p>
+        <p class="headline">{% for block in cv.profile.headline | splitHeadline %}<span class="headline-block">{{ block }}</span>{% if not loop.last %}<span class="headline-separator"> | </span>{% endif %}{% endfor %}</p>
       </section>
 
       <section class="contact-block">

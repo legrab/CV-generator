@@ -16,6 +16,10 @@ function layoutClass(item) {
   return classes.join(" ");
 }
 
+function splitHeadline(headline = "") {
+  return headline.split("|").map((part) => part.trim());
+}
+
 export async function renderHtml(cv, options = {}) {
   const templatePath = path.resolve(options.templatePath ?? "./src/templates/cv.html");
   const template = await fs.readFile(templatePath, "utf8");
@@ -28,6 +32,7 @@ export async function renderHtml(cv, options = {}) {
 
   environment.addFilter("joinTech", (items = []) => items.join(" | "));
   environment.addFilter("layoutClass", layoutClass);
+  environment.addFilter("splitHeadline", splitHeadline);
 
   return environment.renderString(template, {
     cv,
